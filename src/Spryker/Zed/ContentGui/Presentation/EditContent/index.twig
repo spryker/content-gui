@@ -18,20 +18,20 @@
 {% block content %}
     {% block widget_content %}
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-sm-12">
                 {{ form_start(contentForm, {attr: {novalidate: 'novalidate'}}) }}
                     <div class="row">
-                        <div class="col-xs-12 col-md-12">
+                        <div class="col-sm-12">
                             {{ form_row(contentForm.name) }}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12 col-md-12">
+                        <div class="col-sm-12">
                             {{ form_row(contentForm.description) }}
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-sm-12">
                             {{ tabs(contentTabs, {'contentForm' : contentForm} ) }}
                         </div>
                     </div>
