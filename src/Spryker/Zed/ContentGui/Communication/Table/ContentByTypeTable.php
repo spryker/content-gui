@@ -36,11 +36,6 @@ class ContentByTypeTable extends AbstractTable
      */
     protected $contentKey;
 
-    /**
-     * @param string $contentType
-     * @param \Orm\Zed\Content\Persistence\SpyContentQuery $contentQuery
-     * @param string|null $contentKey
-     */
     public function __construct(
         string $contentType,
         SpyContentQuery $contentQuery,
@@ -51,11 +46,6 @@ class ContentByTypeTable extends AbstractTable
         $this->contentKey = $contentKey;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config = $this->setHeader($config);
@@ -77,11 +67,6 @@ class ContentByTypeTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function setHeader(TableConfiguration $config): TableConfiguration
     {
         $header = [
@@ -95,11 +80,6 @@ class ContentByTypeTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $this->contentQuery->filterByContentTypeKey($this->contentType);
@@ -124,9 +104,6 @@ class ContentByTypeTable extends AbstractTable
         return $results;
     }
 
-    /**
-     * @return void
-     */
     protected function addOrderBySelectedKey(): void
     {
         $keyColumn = SpyContentTableMap::COL_KEY;
@@ -138,12 +115,6 @@ class ContentByTypeTable extends AbstractTable
             ->orderBy(SpyContentTableMap::COL_ID_CONTENT);
     }
 
-    /**
-     * @param array $contentItem
-     * @param bool $checked
-     *
-     * @return string
-     */
     protected function buildRadioButton(array $contentItem, bool $checked = false): string
     {
         $selectedAttr = $checked ? 'checked="checked"' : '';
@@ -157,12 +128,6 @@ class ContentByTypeTable extends AbstractTable
         );
     }
 
-    /**
-     * @param int $key
-     * @param string $contentKey
-     *
-     * @return bool
-     */
     protected function isCheckedItem(int $key, string $contentKey): bool
     {
         if ($this->contentKey) {
@@ -172,9 +137,6 @@ class ContentByTypeTable extends AbstractTable
         return $key === 0;
     }
 
-    /**
-     * @return string
-     */
     protected function getTableUrl(): string
     {
         $params = [ListContentByTypeController::PARAM_CONTENT_TYPE => $this->contentType];

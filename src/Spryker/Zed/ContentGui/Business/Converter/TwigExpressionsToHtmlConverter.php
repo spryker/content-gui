@@ -60,11 +60,6 @@ class TwigExpressionsToHtmlConverter implements TwigExpressionsToHtmlConverterIn
         $this->contentEditorPlugins = $contentEditorPlugins;
     }
 
-    /**
-     * @param string $htmlWithTwigExpressions
-     *
-     * @return string
-     */
     public function convert(string $htmlWithTwigExpressions): string
     {
         $this->assureMaxWidgetNumbersIsNotExceeded($htmlWithTwigExpressions);
@@ -160,11 +155,6 @@ class TwigExpressionsToHtmlConverter implements TwigExpressionsToHtmlConverterIn
         return $twigExpressionTransfers;
     }
 
-    /**
-     * @param string $contentKey
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer|null
-     */
     protected function findContentItemByKey(string $contentKey): ?ContentTransfer
     {
         $contentTransfer = $this->contentFacade->findContentByKey($contentKey);
@@ -224,11 +214,6 @@ class TwigExpressionsToHtmlConverter implements TwigExpressionsToHtmlConverterIn
         return strtr($html, $replacements);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TwigExpressionTransfer $twigExpressionTransfer
-     *
-     * @return string
-     */
     protected function getWidgetByTwigExpression(TwigExpressionTransfer $twigExpressionTransfer): string
     {
         $editorContentWidget = strtr($this->contentGuiConfig->getEditorContentWidgetTemplate(), [

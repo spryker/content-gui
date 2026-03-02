@@ -74,11 +74,6 @@ class ContentForm extends AbstractType
      */
     public const TYPE_DATA = 'data';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_AVAILABLE_LOCALES);
@@ -198,9 +193,6 @@ class ContentForm extends AbstractType
             ];
     }
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'content';

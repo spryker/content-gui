@@ -31,21 +31,12 @@ class HtmlToTwigExpressionsConverter implements HtmlToTwigExpressionsConverterIn
      */
     protected $contentGuiConfig;
 
-    /**
-     * @param \DOMDocument $domDocument
-     * @param \Spryker\Zed\ContentGui\ContentGuiConfig $contentGuiConfig
-     */
     public function __construct(DOMDocument $domDocument, ContentGuiConfig $contentGuiConfig)
     {
         $this->domDocument = $domDocument;
         $this->contentGuiConfig = $contentGuiConfig;
     }
 
-    /**
-     * @param string $html
-     *
-     * @return string
-     */
     public function convert(string $html): string
     {
         $this->assureMaxWidgetNumberIsNotExceeded($html);
@@ -80,19 +71,11 @@ class HtmlToTwigExpressionsConverter implements HtmlToTwigExpressionsConverterIn
         return htmlspecialchars_decode(htmlentities("<html>$html</html>"));
     }
 
-    /**
-     * @param string $html
-     *
-     * @return string
-     */
     protected function getHtmlFromDomDocumentSaving(string $html): string
     {
         return rtrim(str_replace(['<html>', '</html>'], '', $html));
     }
 
-    /**
-     * @return array
-     */
     protected function getReplaceableNodes(): array
     {
         $replacements = [];
@@ -119,19 +102,11 @@ class HtmlToTwigExpressionsConverter implements HtmlToTwigExpressionsConverterIn
         return ['oldNode' => $oldNode, 'newNode' => $twigExpression];
     }
 
-    /**
-     * @return \DOMXPath
-     */
     protected function createDOMXPath(): DOMXPath
     {
         return new DOMXPath($this->domDocument);
     }
 
-    /**
-     * @param array $replacement
-     *
-     * @return void
-     */
     protected function replaceElementsWithoutWrappers(array $replacement): void
     {
         $parentNode = $replacement['oldNode']->parentNode;
@@ -142,11 +117,6 @@ class HtmlToTwigExpressionsConverter implements HtmlToTwigExpressionsConverterIn
         $parentNode->removeChild($p);
     }
 
-    /**
-     * @param array $replaceableNodes
-     *
-     * @return void
-     */
     protected function replaceNodes(array $replaceableNodes): void
     {
         foreach ($replaceableNodes as $key => $replacement) {

@@ -20,9 +20,6 @@ class ContentProductContentGuiEditorPluginMock implements ContentGuiEditorPlugin
         'top-title' => 'Top Title',
     ];
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return 'Abstract Product List';
@@ -44,9 +41,6 @@ class ContentProductContentGuiEditorPluginMock implements ContentGuiEditorPlugin
         return $templates;
     }
 
-    /**
-     * @return string
-     */
     public function getTwigFunctionTemplate(): string
     {
         return "{{ content_product_abstract_list('%KEY%', '%TEMPLATE%') }}";

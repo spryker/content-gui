@@ -34,11 +34,6 @@ class ContentFormDataProvider implements ContentFormDataProviderInterface
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ContentGui\Communication\Resolver\ContentResolverInterface $contentResolver
-     * @param \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToContentFacadeInterface $contentFacade
-     * @param \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(
         ContentResolverInterface $contentResolver,
         ContentGuiToContentFacadeInterface $contentFacade,
@@ -49,12 +44,6 @@ class ContentFormDataProvider implements ContentFormDataProviderInterface
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param string $termKey
-     * @param int|null $contentId
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer|null
-     */
     public function getData(string $termKey, ?int $contentId = null): ?ContentTransfer
     {
         if ($contentId !== null) {
@@ -96,11 +85,6 @@ class ContentFormDataProvider implements ContentFormDataProviderInterface
         ];
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentTransfer $contentTransfer
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer
-     */
     protected function setAvailableLocales(ContentTransfer $contentTransfer): ContentTransfer
     {
         $localizedContents = $this->getLocalizedContentList($contentTransfer->getLocalizedContents());

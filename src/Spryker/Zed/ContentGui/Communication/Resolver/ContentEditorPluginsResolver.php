@@ -39,11 +39,6 @@ class ContentEditorPluginsResolver implements ContentEditorPluginsResolverInterf
         return [];
     }
 
-    /**
-     * @param string $contentType
-     *
-     * @return string
-     */
     public function getTwigFunctionTemplateByType(string $contentType): string
     {
         $contentEditorPlugin = $this->resolvePluginByType($contentType);
@@ -68,11 +63,6 @@ class ContentEditorPluginsResolver implements ContentEditorPluginsResolverInterf
         return array_unique($contentTypes);
     }
 
-    /**
-     * @param string $contentType
-     *
-     * @return \Spryker\Zed\ContentGuiExtension\Dependency\Plugin\ContentGuiEditorPluginInterface|null
-     */
     protected function resolvePluginByType(string $contentType): ?ContentGuiEditorPluginInterface
     {
         foreach ($this->contentEditorPlugins as $contentEditorPlugin) {

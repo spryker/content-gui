@@ -16,17 +16,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ListContentController extends AbstractController
 {
-    /**
-     * @return array
-     */
     public function indexAction(): array
     {
         return $this->viewResponse($this->executeIndexAction());
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(): JsonResponse
     {
         $contentTable = $this->getFactory()->createContentTable();
@@ -34,9 +28,6 @@ class ListContentController extends AbstractController
         return $this->jsonResponse($contentTable->fetchData());
     }
 
-    /**
-     * @return array
-     */
     protected function executeIndexAction(): array
     {
         $contentTable = $this->getFactory()->createContentTable();

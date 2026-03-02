@@ -24,41 +24,21 @@ class ContentGuiToContentFacadeBridge implements ContentGuiToContentFacadeInterf
         $this->contentFacade = $contentFacade;
     }
 
-    /**
-     * @param int $idContent
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer|null
-     */
     public function findContentById(int $idContent): ?ContentTransfer
     {
         return $this->contentFacade->findContentById($idContent);
     }
 
-    /**
-     * @param string $contentKey
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer|null
-     */
     public function findContentByKey(string $contentKey): ?ContentTransfer
     {
         return $this->contentFacade->findContentByKey($contentKey);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentTransfer $contentTransfer
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer
-     */
     public function create(ContentTransfer $contentTransfer): ContentTransfer
     {
         return $this->contentFacade->create($contentTransfer);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\ContentTransfer $contentTransfer
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer
-     */
     public function update(ContentTransfer $contentTransfer): ContentTransfer
     {
         return $this->contentFacade->update($contentTransfer);

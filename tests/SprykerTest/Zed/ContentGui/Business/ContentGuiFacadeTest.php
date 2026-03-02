@@ -46,9 +46,6 @@ class ContentGuiFacadeTest extends Unit
      */
     protected $contentGuiFacade;
 
-    /**
-     * @return void
-     */
     public function setUp(): void
     {
         parent::setUp();
@@ -154,9 +151,6 @@ class ContentGuiFacadeTest extends Unit
         $this->assertCmsGlossaryResults($expectedResult, $cmsGlossaryTransfer);
     }
 
-    /**
-     * @return array
-     */
     public function getContentTwigExpressionToHtml(): array
     {
         return [
@@ -234,9 +228,6 @@ class ContentGuiFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @return array
-     */
     public function getContentHtmlToTwigExpression(): array
     {
         return [
@@ -319,11 +310,6 @@ class ContentGuiFacadeTest extends Unit
         ];
     }
 
-    /**
-     * @param string $input
-     *
-     * @return \Generated\Shared\Transfer\CmsBlockGlossaryTransfer
-     */
     protected function createCmsBlockGlossaryTransfer(string $input): CmsBlockGlossaryTransfer
     {
         $cmsBlockGlossaryPlaceholderTranslationTransfer = (new CmsBlockGlossaryPlaceholderTranslationTransfer())
@@ -336,12 +322,6 @@ class ContentGuiFacadeTest extends Unit
             ->addGlossaryPlaceholder($cmsBlockGlossaryPlaceholderTransfer);
     }
 
-    /**
-     * @param string $expectedResult
-     * @param \Generated\Shared\Transfer\CmsBlockGlossaryTransfer $cmsBlockGlossaryTransfer
-     *
-     * @return void
-     */
     protected function assertCmsBlockGlossaryResults(string $expectedResult, CmsBlockGlossaryTransfer $cmsBlockGlossaryTransfer): void
     {
         // Assert
@@ -352,11 +332,6 @@ class ContentGuiFacadeTest extends Unit
         $this->assertEquals($expectedResult, $translation);
     }
 
-    /**
-     * @param string $actualString
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     protected function createCmsGlossaryTransfer(string $actualString): CmsGlossaryTransfer
     {
         $cmsPlaceholderTranslationTransfer = (new CmsPlaceholderTranslationTransfer())
@@ -369,12 +344,6 @@ class ContentGuiFacadeTest extends Unit
             ->addGlossaryAttribute($cmsGlossaryAttributesTransfer);
     }
 
-    /**
-     * @param string $expectedResult
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     *
-     * @return void
-     */
     public function assertCmsGlossaryResults(string $expectedResult, CmsGlossaryTransfer $cmsGlossaryTransfer): void
     {
         // Assert
@@ -385,9 +354,6 @@ class ContentGuiFacadeTest extends Unit
         $this->assertEquals($expectedResult, $translation);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Business\ContentGuiFacadeInterface
-     */
     protected function createContentGuiFacade(): ContentGuiFacadeInterface
     {
         $factory = new ContentGuiBusinessFactory();
@@ -400,9 +366,6 @@ class ContentGuiFacadeTest extends Unit
         return $facade;
     }
 
-    /**
-     * @return bool
-     */
     protected function isDynamicStoreEnabled(): bool
     {
         return (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE');

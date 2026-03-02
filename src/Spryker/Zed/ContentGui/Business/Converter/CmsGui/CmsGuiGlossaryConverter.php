@@ -23,10 +23,6 @@ class CmsGuiGlossaryConverter implements CmsGuiGlossaryConverterInterface
      */
     protected $twigExpressionsToHtmlConverter;
 
-    /**
-     * @param \Spryker\Zed\ContentGui\Business\Converter\HtmlToTwigExpressionsConverterInterface $htmlToTwigExpressionConverter
-     * @param \Spryker\Zed\ContentGui\Business\Converter\TwigExpressionsToHtmlConverterInterface $twigExpressionToHtmlConverter
-     */
     public function __construct(
         HtmlToTwigExpressionsConverterInterface $htmlToTwigExpressionConverter,
         TwigExpressionsToHtmlConverterInterface $twigExpressionToHtmlConverter
@@ -35,11 +31,6 @@ class CmsGuiGlossaryConverter implements CmsGuiGlossaryConverterInterface
         $this->twigExpressionsToHtmlConverter = $twigExpressionToHtmlConverter;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     public function convertTwigExpressionsToHtml(CmsGlossaryTransfer $cmsGlossaryTransfer): CmsGlossaryTransfer
     {
         $cmsGlossaryAttributesTransfers = $cmsGlossaryTransfer->getGlossaryAttributes();
@@ -68,11 +59,6 @@ class CmsGuiGlossaryConverter implements CmsGuiGlossaryConverterInterface
         return $cmsGlossaryTransfer->setGlossaryAttributes($cmsGlossaryAttributesTransfers);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CmsGlossaryTransfer $cmsGlossaryTransfer
-     *
-     * @return \Generated\Shared\Transfer\CmsGlossaryTransfer
-     */
     public function convertHtmlToTwigExpressions(CmsGlossaryTransfer $cmsGlossaryTransfer): CmsGlossaryTransfer
     {
         $cmsGlossaryAttributesTransfers = $cmsGlossaryTransfer->getGlossaryAttributes();

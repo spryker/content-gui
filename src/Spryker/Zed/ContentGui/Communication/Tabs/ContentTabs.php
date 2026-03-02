@@ -21,19 +21,11 @@ class ContentTabs extends AbstractTabs
      */
     protected $localeFacade;
 
-    /**
-     * @param \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToLocaleFacadeInterface $localeFacade
-     */
     public function __construct(ContentGuiToLocaleFacadeInterface $localeFacade)
     {
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\TabsViewTransfer $tabsViewTransfer
-     *
-     * @return \Generated\Shared\Transfer\TabsViewTransfer
-     */
     protected function build(TabsViewTransfer $tabsViewTransfer): TabsViewTransfer
     {
         $this->addLocaleTab($tabsViewTransfer);

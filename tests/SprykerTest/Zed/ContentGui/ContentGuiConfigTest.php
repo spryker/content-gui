@@ -20,17 +20,11 @@ use Spryker\Zed\ContentGui\ContentGuiConfig;
  */
 class ContentGuiConfigTest extends ContentGuiConfig
 {
-    /**
-     * @return string
-     */
     public function getEditorContentWidgetWrapper(): string
     {
         return '%s';
     }
 
-    /**
-     * @return string
-     */
     public function getEditorContentWidgetTemplate(): string
     {
         return '<span data-type="' . $this->getParameterType() . '" data-key="' . $this->getParameterKey() . '" '
@@ -41,9 +35,6 @@ class ContentGuiConfigTest extends ContentGuiConfig
         . '</span>';
     }
 
-    /**
-     * @return string
-     */
     public function getWidgetXpathQuery(): string
     {
         return '//span[@data-key][@data-twig-expression][@data-template][@data-type]';

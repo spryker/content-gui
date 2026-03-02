@@ -26,9 +26,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
  */
 class ContentGuiBusinessFactory extends AbstractBusinessFactory
 {
-    /**
-     * @return \Spryker\Zed\ContentGui\Business\Converter\CmsGui\CmsGuiGlossaryConverterInterface
-     */
     public function createCmsGuiGlossaryConverter(): CmsGuiGlossaryConverterInterface
     {
         return new CmsGuiGlossaryConverter(
@@ -37,9 +34,6 @@ class ContentGuiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Business\Converter\CmsBlockGui\CmsBlockGuiGlossaryConverterInterface
-     */
     public function createCmsBlockGuiGlossaryConverter(): CmsBlockGuiGlossaryConverterInterface
     {
         return new CmsBlockGuiGlossaryConverter(
@@ -48,9 +42,6 @@ class ContentGuiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Business\Converter\HtmlToTwigExpressionsConverterInterface
-     */
     public function createHtmlToTwigExpressionConverter(): HtmlToTwigExpressionsConverterInterface
     {
         return new HtmlToTwigExpressionsConverter(
@@ -59,9 +50,6 @@ class ContentGuiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Business\Converter\TwigExpressionsToHtmlConverterInterface
-     */
     public function createTwigExpressionToHtmlConverter(): TwigExpressionsToHtmlConverterInterface
     {
         return new TwigExpressionsToHtmlConverter(
@@ -72,9 +60,6 @@ class ContentGuiBusinessFactory extends AbstractBusinessFactory
         );
     }
 
-    /**
-     * @return \DOMDocument
-     */
     public function createDomDocument(): DOMDocument
     {
         return new DOMDocument();
@@ -88,17 +73,11 @@ class ContentGuiBusinessFactory extends AbstractBusinessFactory
         return $this->getProvidedDependency(ContentGuiDependencyProvider::PLUGINS_CONTENT_EDITOR);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToContentFacadeInterface
-     */
     public function getContentFacade(): ContentGuiToContentFacadeInterface
     {
         return $this->getProvidedDependency(ContentGuiDependencyProvider::FACADE_CONTENT);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToTranslatorFacadeInterface
-     */
     public function getTranslatorFacade(): ContentGuiToTranslatorFacadeInterface
     {
         return $this->getProvidedDependency(ContentGuiDependencyProvider::FACADE_TRANSLATOR);

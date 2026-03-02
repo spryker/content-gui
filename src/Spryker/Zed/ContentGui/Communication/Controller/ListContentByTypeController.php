@@ -32,11 +32,6 @@ class ListContentByTypeController extends AbstractController
      */
     public const PARAM_CONTENT_TEMPLATE = 'template';
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return array
-     */
     public function indexAction(Request $request): array
     {
         /** @var string|null $contentType */
@@ -60,11 +55,6 @@ class ListContentByTypeController extends AbstractController
         return $this->viewResponse($data);
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
-     */
     public function tableAction(Request $request): JsonResponse
     {
         /** @var string|null $contentType */

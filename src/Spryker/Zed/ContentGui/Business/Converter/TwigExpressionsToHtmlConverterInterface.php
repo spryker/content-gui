@@ -9,10 +9,5 @@ namespace Spryker\Zed\ContentGui\Business\Converter;
 
 interface TwigExpressionsToHtmlConverterInterface
 {
-    /**
-     * @param string $htmlWithTwigExpressions
-     *
-     * @return string
-     */
     public function convert(string $htmlWithTwigExpressions): string;
 }

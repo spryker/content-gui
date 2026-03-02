@@ -11,12 +11,6 @@ use Generated\Shared\Transfer\ContentTransfer;
 
 interface ContentFormDataProviderInterface
 {
-    /**
-     * @param string $termKey
-     * @param int|null $contentId
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer|null
-     */
     public function getData(string $termKey, ?int $contentId = null): ?ContentTransfer;
 
     /**

@@ -28,9 +28,6 @@ class ContentItemQueryTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testOrderContentItemsBySelectedItem(): void
     {
         // Arrange

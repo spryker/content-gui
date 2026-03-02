@@ -26,9 +26,6 @@ class ContentByTypeTableMock extends ContentByTypeTable
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function fetchData(): array
     {
         $this->init();

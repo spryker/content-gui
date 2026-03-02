@@ -32,9 +32,6 @@ use Symfony\Component\Form\FormInterface;
  */
 class ContentGuiCommunicationFactory extends AbstractCommunicationFactory
 {
-    /**
-     * @return \Spryker\Zed\ContentGui\Communication\Table\ContentTable
-     */
     public function createContentTable(): ContentTable
     {
         return new ContentTable(
@@ -43,17 +40,11 @@ class ContentGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Communication\Tabs\ContentTabs
-     */
     public function createContentTabs(): ContentTabs
     {
         return new ContentTabs($this->getLocaleFacade());
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Communication\Form\DataProvider\ContentFormDataProviderInterface
-     */
     public function createContentFormDataProvider(): ContentFormDataProviderInterface
     {
         return new ContentFormDataProvider(
@@ -63,20 +54,11 @@ class ContentGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Communication\Resolver\ContentResolverInterface
-     */
     public function createContentResolver(): ContentResolverInterface
     {
         return new ContentResolver($this->getContentPlugins());
     }
 
-    /**
-     * @param string $contentType
-     * @param string|null $contentKey
-     *
-     * @return \Spryker\Zed\ContentGui\Communication\Table\ContentByTypeTable
-     */
     public function createContentByTypeTable(string $contentType, ?string $contentKey = null): ContentByTypeTable
     {
         return new ContentByTypeTable(
@@ -86,9 +68,6 @@ class ContentGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Communication\Resolver\ContentEditorPluginsResolverInterface
-     */
     public function createContentEditorPluginsResolver(): ContentEditorPluginsResolverInterface
     {
         return new ContentEditorPluginsResolver($this->getContentEditorPlugins());
@@ -105,25 +84,16 @@ class ContentGuiCommunicationFactory extends AbstractCommunicationFactory
         return $this->getFormFactory()->create(ContentForm::class, $data, $options);
     }
 
-    /**
-     * @return \Orm\Zed\Content\Persistence\SpyContentQuery
-     */
     public function getPropelContentQuery(): SpyContentQuery
     {
         return $this->getProvidedDependency(ContentGuiDependencyProvider::PROPEL_QUERY_CONTENT);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToLocaleFacadeInterface
-     */
     public function getLocaleFacade(): ContentGuiToLocaleFacadeInterface
     {
         return $this->getProvidedDependency(ContentGuiDependencyProvider::FACADE_LOCALE);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Dependency\Facade\ContentGuiToContentFacadeInterface
-     */
     public function getContentFacade(): ContentGuiToContentFacadeInterface
     {
         return $this->getProvidedDependency(ContentGuiDependencyProvider::FACADE_CONTENT);
@@ -137,9 +107,6 @@ class ContentGuiCommunicationFactory extends AbstractCommunicationFactory
         return $this->getProvidedDependency(ContentGuiDependencyProvider::PLUGINS_CONTENT_ITEM);
     }
 
-    /**
-     * @return \Spryker\Zed\ContentGui\Dependency\Service\ContentGuiToUtilEncodingInterface
-     */
     public function getUtilEncoding(): ContentGuiToUtilEncodingInterface
     {
         return $this->getProvidedDependency(ContentGuiDependencyProvider::SERVICE_UTIL_ENCODING);

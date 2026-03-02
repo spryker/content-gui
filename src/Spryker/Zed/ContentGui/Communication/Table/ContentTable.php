@@ -37,11 +37,6 @@ class ContentTable extends AbstractTable
         $this->contentTypeKeyCache = $this->populateContentTypeKeyCache($contentPlugins);
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function configure(TableConfiguration $config): TableConfiguration
     {
         $config = $this->setHeader($config);
@@ -70,11 +65,6 @@ class ContentTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
-     */
     protected function setHeader(TableConfiguration $config): TableConfiguration
     {
         $header = [
@@ -92,11 +82,6 @@ class ContentTable extends AbstractTable
         return $config;
     }
 
-    /**
-     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
-     *
-     * @return array
-     */
     protected function prepareData(TableConfiguration $config): array
     {
         $contents = $this->runQuery($this->contentQuery, $config);
@@ -117,11 +102,6 @@ class ContentTable extends AbstractTable
         return $results;
     }
 
-    /**
-     * @param array $content
-     *
-     * @return string
-     */
     protected function buildLinks(array $content): string
     {
         if (!$this->isContentTypeEnabled($content[ContentTableConstants::COL_CONTENT_TYPE_KEY])) {
@@ -157,21 +137,11 @@ class ContentTable extends AbstractTable
         return array_unique($contentTypeKeyCache);
     }
 
-    /**
-     * @param string $contentTypeKey
-     *
-     * @return bool
-     */
     protected function isContentTypeEnabled(string $contentTypeKey): bool
     {
         return in_array($contentTypeKey, $this->contentTypeKeyCache, true);
     }
 
-    /**
-     * @param string $label
-     *
-     * @return string
-     */
     protected function buildContentTypeLabel(string $label): string
     {
         return $this->generateLabel(ucfirst($label), 'label-info');

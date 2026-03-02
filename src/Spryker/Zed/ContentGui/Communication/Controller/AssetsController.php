@@ -15,9 +15,6 @@ use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
  */
 class AssetsController extends AbstractController
 {
-    /**
-     * @return array
-     */
     public function indexAction(): array
     {
         $editorContentTypes = $this->getFactory()->createContentEditorPluginsResolver()->getContentTypes();

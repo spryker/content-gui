@@ -39,11 +39,6 @@ class LocalizedContentForm extends AbstractType
      */
     public const FIELD_PARAMETERS = 'parameters';
 
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(ContentForm::OPTION_CONTENT_ITEM_FORM_PLUGIN);
@@ -149,9 +144,6 @@ class LocalizedContentForm extends AbstractType
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getBlockPrefix(): string
     {
         return 'localized-content';

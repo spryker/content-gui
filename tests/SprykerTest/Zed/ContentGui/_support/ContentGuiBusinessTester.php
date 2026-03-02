@@ -31,11 +31,6 @@ class ContentGuiBusinessTester extends Actor
 {
     use _generated\ContentGuiBusinessTesterActions;
 
-    /**
-     * @param string|null $key
-     *
-     * @return \Generated\Shared\Transfer\ContentTransfer
-     */
     public function createBannerContentItem(?string $key = null): ContentTransfer
     {
         $data = [
@@ -54,9 +49,6 @@ class ContentGuiBusinessTester extends Actor
         return $this->haveContent($data);
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\ContentTransfer
-     */
     public function createAbstractProductListContentItem(): ContentTransfer
     {
         $data = [

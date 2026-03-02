@@ -20,9 +20,6 @@ class ContentBannerContentGuiEditorPluginMock implements ContentGuiEditorPluginI
         'top-title' => 'Top Title',
     ];
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return 'Banner';
@@ -44,9 +41,6 @@ class ContentBannerContentGuiEditorPluginMock implements ContentGuiEditorPluginI
         return $templates;
     }
 
-    /**
-     * @return string
-     */
     public function getTwigFunctionTemplate(): string
     {
         return "{{ content_banner('%KEY%', '%TEMPLATE%') }}";
