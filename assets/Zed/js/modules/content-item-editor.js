@@ -5,6 +5,7 @@
 
 'use strict';
 
+var DOMPurify = require('dompurify');
 var editorConfig = require('ZedGuiEditorConfiguration');
 var editorButtons = require('./editorComponents/buttons');
 var ContentItemDialog = require('./content-item-editor-dialog');
@@ -161,7 +162,7 @@ var ContentItemEditor = function (options) {
             return;
         }
 
-        var $elementForInsert = $('<div>' + $editorParentNode.html() + '</div>');
+        var $elementForInsert = $('<div>' + DOMPurify.sanitize($editorParentNode.html()) + '</div>');
 
         $editorParentNode.replaceWith($elementForInsert);
         this.putCaretAtTheLineEnd($elementForInsert);
