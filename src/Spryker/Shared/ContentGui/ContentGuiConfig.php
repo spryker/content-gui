@@ -12,6 +12,8 @@ use Spryker\Shared\Kernel\AbstractSharedConfig;
 class ContentGuiConfig extends AbstractSharedConfig
 {
     /**
+     * @api
+     *
      * Default locale name
      *
      * @var string
