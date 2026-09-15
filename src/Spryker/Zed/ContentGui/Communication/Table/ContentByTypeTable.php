@@ -64,6 +64,12 @@ class ContentByTypeTable extends AbstractTable
         ]);
         $config->setStateSave(false);
 
+        // The table is shown in the dialog of the content item editor, which is too narrow for the control
+        // that changes how many entries a page holds.
+        $config->setTableAttributes([
+            'data-length-change' => 'false',
+        ]);
+
         return $config;
     }
 

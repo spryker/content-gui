@@ -5,7 +5,7 @@
 
 'use strict';
 
-var dataTable = require('ZedGuiModules/libs/data-table');
+var table = require('ZedGuiModules/libs/table/table');
 
 var ContentItemDialog = function (
     dialogTitle,
@@ -268,19 +268,30 @@ var ContentItemDialog = function (
             };
 
             this.initContentHtml = function (data) {
-                var dataAjaxUrl = $(data).find('table').data('ajax');
+                var $container = this.$dialog.find('.content-item-body .content-ajax');
 
                 this.$dialog.find('.content-item-loader').hide();
-                this.$dialog.find('.content-item-body .content-ajax').append(data);
-                this.$dialog.find('table').DataTable({
-                    ajax: dataAjaxUrl,
-                    lengthChange: false,
-                    language: dataTable.defaultConfiguration.language,
-                });
+                $container.append(data);
+
+                $container[0].dispatchEvent(new CustomEvent(table.TABLE_INIT_EVENT, { bubbles: true }));
             };
 
             this.clearContent = function () {
-                this.$dialog.find('.content-item-body .content-ajax').empty();
+                var $container = this.$dialog.find('.content-item-body .content-ajax');
+
+                // Teardown, not creation: these tables were created by the orchestrator, which was told
+                // about them by the TABLE_INIT_EVENT above. It owns no way to let go of one again - its
+                // handles are keyed by the element, and `empty()` below drops the elements - so the plugin
+                // is named directly here. Destroying is what keeps reopening the dialog correct: the next
+                // open appends fresh elements, and a table left behind would be reported as foreign.
+                // Replace this with a handle once TableHandle can tear a table down.
+                $container.find('table').each(function () {
+                    if ($.fn.dataTable.isDataTable(this)) {
+                        $(this).DataTable().destroy();
+                    }
+                });
+
+                $container.empty();
                 this.$dialog.find('.content-item-loader').show();
             };
 

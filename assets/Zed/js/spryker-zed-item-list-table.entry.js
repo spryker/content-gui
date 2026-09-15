@@ -5,8 +5,4 @@
 
 'use strict';
 
-if (!window.ContentItemListTable) {
-    require('../sass/table.scss');
-    require('./modules/add-item-list-table');
-    window.ContentItemListTable = true;
-}
+require('../sass/table.scss');
