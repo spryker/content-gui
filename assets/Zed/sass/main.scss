@@ -16,6 +16,7 @@
 
     .ibox-title {
         border-width: 0;
+        background-color: #f5f5f5;
 
         h5 {
             float: none;
@@ -30,10 +31,6 @@
 
     .template-title {
         font-size: 14px;
-    }
-
-    .ibox-title {
-        background-color: #f5f5f5;
     }
 
     .ibox {
@@ -62,7 +59,7 @@
     display: inline-block;
     border: 2px solid #2f4050;
     border-radius: 8px;
-    background-color: rgba(68, 122, 173, 0.54);
+    background-color: rgb(68 122 173 / 54%);
 
     * {
         color: #fff !important;
