@@ -86,6 +86,9 @@ class ContentByTypeTable extends AbstractTable
         return $config;
     }
 
+    /**
+     * @return array<array<string, mixed>>
+     */
     protected function prepareData(TableConfiguration $config): array
     {
         $this->contentQuery->filterByContentTypeKey($this->contentType);
@@ -112,15 +115,26 @@ class ContentByTypeTable extends AbstractTable
 
     protected function addOrderBySelectedKey(): void
     {
-        $keyColumn = SpyContentTableMap::COL_KEY;
-        $selectedKeyColumn = sprintf("(CASE WHEN $keyColumn = '%s' THEN 0 ELSE 1 END)", $this->contentKey);
+        $selectedContentEntity = (clone $this->contentQuery)->findOneByKey((string)$this->contentKey);
 
-        $this->contentQuery
-            ->withColumn($selectedKeyColumn, 'selectedKey')
-            ->orderBy('selectedKey')
-            ->orderBy(SpyContentTableMap::COL_ID_CONTENT);
+        if ($selectedContentEntity) {
+            $selectedKeyColumn = sprintf(
+                '(CASE WHEN %s = %d THEN 0 ELSE 1 END)',
+                SpyContentTableMap::COL_ID_CONTENT,
+                $selectedContentEntity->getIdContent(),
+            );
+
+            $this->contentQuery
+                ->withColumn($selectedKeyColumn, 'selectedKey')
+                ->orderBy('selectedKey');
+        }
+
+        $this->contentQuery->orderBy(SpyContentTableMap::COL_ID_CONTENT);
     }
 
+    /**
+     * @param array<string, mixed> $contentItem
+     */
     protected function buildRadioButton(array $contentItem, bool $checked = false): string
     {
         $selectedAttr = $checked ? 'checked="checked"' : '';
@@ -128,9 +142,9 @@ class ContentByTypeTable extends AbstractTable
         return sprintf(
             static::FIELD_ACTION_CONTENT_ITEM,
             $selectedAttr,
-            $contentItem[ContentTableConstants::COL_NAME],
+            htmlspecialchars((string)$contentItem[ContentTableConstants::COL_NAME], ENT_QUOTES, 'UTF-8'),
             $contentItem[ContentTableConstants::COL_ID_CONTENT],
-            $contentItem[ContentTableConstants::COL_KEY],
+            htmlspecialchars((string)$contentItem[ContentTableConstants::COL_KEY], ENT_QUOTES, 'UTF-8'),
         );
     }
 
