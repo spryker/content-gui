@@ -34,5 +34,40 @@
     };
 </script>
 
+{#
+    The rich-text editor's content item dialog, cloned by assets/Zed/js/modules/rich-text/content-item-modal.ts.
+#}
+{% block content_item_modal %}
+    <template id="content-item-modal-template">
+        <div class="modal fade content-item-modal" tabindex="-1" aria-labelledby="content-item-modal-title">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title js-content-item-modal__title" id="content-item-modal-title"></h5>
+                        <button type="button" class="btn-close js-content-item-modal__close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-danger js-content-item-modal__error" role="alert" hidden></div>
+                        <div class="content-item-loader text-center js-content-item-modal__loader" role="status">
+                            <span class="spinner-border"></span>
+                        </div>
+                        <div class="content-ajax js-content-item-modal__content"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary add-content-item js-content-item-modal__insert"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+{% endblock %}
+
 <script src="{{ assetsPath('js/spryker-zed-content-item.js') }}"></script>
+<script src="{{ assetsPath('js/spryker-zed-content-gui-rich-text.js') }}"></script>
 <link rel="stylesheet" href="{{ assetsPath('css/spryker-zed-content-item.css') }}" />
+{# The rich-text editor reads these with its own labels (Gui labels.ts); keys and English texts are the feature's context.label() calls. #}
+<script type="application/json" data-spryker-rich-text-editor-labels>{{ {
+    contentItemOpenError: 'The content item could not be opened.' | trans,
+    contentItemRemove: 'Remove' | trans,
+    contentItemLimit: 'Limit exceeded, maximum number of widgets %maxWidgetNumber%' | trans
+} | json_encode(constant('JSON_HEX_TAG') b-or constant('JSON_HEX_AMP')) | raw }}</script>

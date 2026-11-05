@@ -29,3 +29,6 @@ Updated,Updated
 "Stock successfully updated","Stock successfully updated."
 "Move Up","Move Up"
 "Move Down","Move Down"
+"The content item could not be opened.","The content item could not be opened."
+Remove,Remove
+"Limit exceeded, maximum number of widgets %maxWidgetNumber%","Limit exceeded, maximum number of widgets %maxWidgetNumber%"

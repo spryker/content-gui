@@ -6,6 +6,7 @@
 'use strict';
 
 var table = require('ZedGuiModules/libs/table/table');
+var contentItemTableTeardown = require('./content-item-table-teardown');
 
 var ContentItemDialog = function (
     dialogTitle,
@@ -279,18 +280,7 @@ var ContentItemDialog = function (
             this.clearContent = function () {
                 var $container = this.$dialog.find('.content-item-body .content-ajax');
 
-                // Teardown, not creation: these tables were created by the orchestrator, which was told
-                // about them by the TABLE_INIT_EVENT above. It owns no way to let go of one again - its
-                // handles are keyed by the element, and `empty()` below drops the elements - so the plugin
-                // is named directly here. Destroying is what keeps reopening the dialog correct: the next
-                // open appends fresh elements, and a table left behind would be reported as foreign.
-                // Replace this with a handle once TableHandle can tear a table down.
-                $container.find('table').each(function () {
-                    if ($.fn.dataTable.isDataTable(this)) {
-                        $(this).DataTable().destroy();
-                    }
-                });
-
+                contentItemTableTeardown.destroyContentItemTables($container[0]);
                 $container.empty();
                 this.$dialog.find('.content-item-loader').show();
             };

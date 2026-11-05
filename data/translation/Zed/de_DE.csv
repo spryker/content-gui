@@ -29,3 +29,6 @@ Updated,Aktualisiert
 "Stock successfully updated","Lagerbestand erfolgreich aktualisiert."
 "Move Up","Nach oben"
 "Move Down","Nach unten"
+"The content item could not be opened.","Das Inhaltselement konnte nicht geöffnet werden."
+Remove,Entfernen
+"Limit exceeded, maximum number of widgets %maxWidgetNumber%","Limit überschritten, maximale Anzahl an Widgets: %maxWidgetNumber%"
