@@ -110,11 +110,11 @@ class HtmlToTwigExpressionsConverter implements HtmlToTwigExpressionsConverterIn
     protected function replaceElementsWithoutWrappers(array $replacement): void
     {
         $parentNode = $replacement['oldNode']->parentNode;
-        $p = $this->domDocument->createElement('p');
-        $parentNode->insertBefore($p, $replacement['oldNode']);
-        $p->appendChild($replacement['oldNode']);
-        $parentNode->insertBefore($replacement['newNode'], $p);
-        $parentNode->removeChild($p);
+        $paragraph = $this->domDocument->createElement('p');
+        $parentNode->insertBefore($paragraph, $replacement['oldNode']);
+        $paragraph->appendChild($replacement['oldNode']);
+        $parentNode->insertBefore($replacement['newNode'], $paragraph);
+        $parentNode->removeChild($paragraph);
     }
 
     protected function replaceNodes(array $replaceableNodes): void
